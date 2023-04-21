@@ -1,0 +1,9 @@
+/* css都是全局的 会发生央视混乱 */
+.title{
+  font-size: 40px;
+  color: red;
+}
+.text{
+  font-size: 20px;
+  color: purple;
+}
