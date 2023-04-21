@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .active {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <script type="text/babel">
+      class App extends React.Component {
+        constructor() {
+          super();
+          this.state = {
+            message: "Hello World",
+            movies: ["流浪地球", "星际穿越", "心灵之旅", "机器人五"],
+            currentIndex: 0,
+          };
+        }
+        btnClick(index) {
+          this.setState({
+            currentIndex:index
+          })
+          }
+        render() {
+          return (
+            <div>
+              <ul>
+                {this.state.movies.map((item, index) => {
+                  return (
+                    <li
+                      className={this.state.currentIndex == index ? "active" : ""}
+                      key={item}
+                      onClick={() => this.btnClick(index)}
+                    >
+                      {item}
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          );
+        }
+      }
+      let root = ReactDOM.createRoot(document.querySelector("#root"));
+      root.render(<App />);
+    </script>
+  </body>
+</html>

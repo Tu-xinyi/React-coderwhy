@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <script type="text/babel">
+      // App组件 将app继承React.Component变成一个类组件
+      class App extends React.Component {
+        constructor() {
+          super();
+          // 数据
+          this.state = {
+            message: "Hello World",
+            name: "why",
+            age: 18,
+          };
+          // 当多个<button onClick={this.btnClick.bind(this)}>修改</button> this写法比较复杂
+          // this.btnClick = this.btnClick.bind(this)
+        }
+        // 方法  ！！！无需再次触发render函数更新dom react组件内部会自动触发
+        btnClick() {
+          // 'use strict'
+          // console.log("btn函数", this);
+          // setState方法来自于React.Component
+          // 1.将值修改掉
+          // 2.自动重新执行render函数
+          this.setState({
+            message:'Hello React!'
+          })
+          console.log(this);
+        }
+        // 组件渲染的固定方法 不能改名 
+        // 将return的东西渲染出来
+        render() {
+          return (
+            //情形一  this=>undefined
+            // <div>
+            //   <div>Hello World!</div>
+            //   <button onClick={this.btnClick}></button>
+            // </div>
+            // 请形二  bind显示绑定render函数的this=>组件的实例
+             <div>
+              <div>{this.state.message}</div>
+              <button onClick={this.btnClick.bind(this)}>修改</button>
+            </div>
+          );
+        }
+      }
+      let root = ReactDOM.createRoot(document.querySelector("#root"));
+      root.render(<App />);
+    </script>
+  </body>
+</html>

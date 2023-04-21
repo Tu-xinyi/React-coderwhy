@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <!-- 引入三个文件 -->
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script type="text/babel">
+      let message = "hello React!";
+      function btnClick() {
+        message = "你好 REACT";
+        // 触发函数修改文本后 要再次执行rootrender函数 使得Dom从新加载一边
+        rootrender();
+      }
+      // 创建跟ReactDom.lcreateRoot(documnet.querySelector())
+      let root = ReactDOM.createRoot(document.querySelector("#root"));
+
+      // render函数
+      function rootrender() {
+        // 渲染跟 root.render()
+        root.render(
+          <div>
+            <div>{message}</div>
+            <button onClick={btnClick}>修改文案</button>
+          </div>
+        );
+      }
+      rootrender();
+    </script>
+  </body>
+</html>

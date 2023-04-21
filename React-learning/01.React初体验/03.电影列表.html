@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script type="text/babel">
+      class APP extends React.Component {
+        constructor() {
+          super();
+          this.state = {
+            movies: ["流浪地球", "毒性地區", "你好厲害呀"],
+          };
+        }
+        render() {
+          // 1.for循環
+          // const lis=[];
+          // for(let i =0 ;i<this.state.movies.length;i++){
+          //   let li = this.state.movies[i];
+          //   let lin = <li>{li}</li>;
+          //   lis.push(lin)
+          // }
+          // 2.简写
+          // const lis = this.state.movies.map((movie) => <li>{movie}</li>);
+
+          // return (
+          //   <div>
+          //     <h2>電影列表</h2>
+          //     <ul>{lis}</ul>
+          //   </div>
+          // );
+
+          // 3.直接写在div里
+          return (
+            <div>
+              <h2>電影列表</h2>
+              <ul>{this.state.movies.map((movie) => <li>{movie}</li>)}</ul>
+            </div>
+          );
+        }
+      }
+      const root = ReactDOM.createRoot(document.querySelector("#root"));
+      root.render(<APP />);
+    </script>
+  </body>
+</html>

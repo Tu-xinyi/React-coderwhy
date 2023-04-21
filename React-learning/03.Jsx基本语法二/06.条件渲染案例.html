@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <script type="text/babel">
+      class App extends React.Component {
+        constructor() {
+          super();
+          this.state = {
+
+            message: "Hello World",
+
+            isReady:true
+
+          };
+        }
+        change(){
+          this.setState({isReady:!this.state.isReady})
+        }
+        render() {
+          const {message,isReady} = this.state;
+          let show = null;
+          // 类似于v-if的作用：修改DOM
+          if(isReady){
+            show = message
+          }
+          return (
+            <div>
+              <div>{show}</div>
+              <button onClick={()=>this.change()}>切换</button>
+              {/*实现v-show的效果 只是改变样式 不会再DOM结构中移除*/}
+              <div style={{display : isReady?'block':'none'}}>模仿v-show的效果</div>
+            </div>
+          );
+        }
+      }
+      let root = ReactDOM.createRoot(document.querySelector("#root"));
+      root.render(<App />);
+    </script>
+  </body>
+</html>

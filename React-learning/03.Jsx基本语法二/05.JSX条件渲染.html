@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <script type="text/babel">
+      class App extends React.Component {
+        constructor() {
+          super();
+          
+          this.state = {
+
+            message: "Hello World",
+
+            isReady:true,
+
+            friend:{
+              name:'tutu',
+              sec:'xinyi'
+            }
+
+          };
+        }
+        render() {
+          const {isReady,friend} = this.state;
+          // 方法一：if条件判断(最常见的方法)
+          let showDom = null;
+          if(isReady){
+            showDom = <h5>hahahahaha</h5>
+          }else{
+            showDom = <h5>hehehehehe</h5>
+          }
+          return (
+            <div>
+              {/*方法一：条件判断*/}
+              <div>{showDom}</div>
+              {/*方法二： 三元运算符   适用于不太复杂的渲染情况*/}
+              {isReady? <button>开始战斗</button>:<button>继续加油</button>}
+              {/*方法三：&&逻辑与运算  当某一个值可能为undefined时 使用逻辑与进行判断*/}
+              {friend&&<div>{friend.name+' '+friend.sec}</div>}
+            </div>
+          );
+        }
+      }
+      let root = ReactDOM.createRoot(document.querySelector("#root"));
+      root.render(<App />);
+    </script>
+  </body>
+</html>
+<!-- （重构 删除元素）  三远远算符  赋值不同的值if  逻辑与&&&   可选链-->

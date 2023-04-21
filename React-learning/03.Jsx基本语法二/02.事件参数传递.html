@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <script type="text/babel">
+      class App extends React.Component {
+        constructor() {
+          super();
+          this.state = {
+            message: "Hello World",
+          };
+        }
+        btn1Click(e) {
+          console.log("btn1", e, this);
+        }
+        // e事件对象
+        btn2Click(e,name,age) {
+          console.log("btn2", e, this);
+          console.log(name,age);
+        }
+        render() {
+          const message = this.state.message;
+          return (
+            <div>
+              {/*event参数的传递*/}
+              <button onClick={this.btn1Click.bind(this)}>
+                event参数的传递
+              </button>
+              <button onClick={(e) => this.btn1Click(e)}>推荐方式</button>
+              {/*2.event多个参数的传递*/}
+              {/*bind方法参数传递顺序发生错乱*/}
+              <button onClick={this.btn2Click.bind(this,'18','tutu')}>bind方法多个参数的传递</button>
+              {/*用第三种推荐的方法 参数传递清晰 顺序正确*/}
+              <button onClick={(e)=>{this.btn2Click(e,'18','tutu')}}>推荐方法多个参数的传递</button>
+
+            </div>
+          );
+        }
+      }
+      let root = ReactDOM.createRoot(document.querySelector("#root"));
+      root.render(<App />);
+    </script>
+  </body>
+</html>

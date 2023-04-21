@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <script type="text/babel">
+      class App extends React.Component {
+        constructor() {
+          super();
+          this.state = {
+            message: "Hello World",
+            student:[
+              {id:1,name:'a',score:22},
+              {id:2,name:'b',score:33},
+              {id:3,name:'c',score:44},
+              {id:4,name:'d',score:55},
+
+            ]
+          };
+        }
+        // 渲染列表尝试用的方式 ===  高阶函数 map(遍历item) 
+        // slice(截取 从第一位数开始截取 截取到第二个不包含第二个) 
+        // filter(过滤)
+        render() {
+          const {student} = this.state;
+          const overStudent = student.filter(item =>{
+            return item.score>30;
+          })
+          const sliceStudent=overStudent.slice(0,2)
+          return (
+            <div>
+              <div>学生成绩列表</div>
+              <div>
+                {
+                  sliceStudent.map(item => {
+                  return(
+                    <div key={item.id}>
+                      <h3>{item.id}</h3>
+                      <h3>{item.name}</h3>
+                     <h3>{item.score}</h3></div>
+                  )                  
+                })
+              }</div>
+            </div>
+          );
+        }
+      }
+      let root = ReactDOM.createRoot(document.querySelector("#root"));
+      root.render(<App />);
+    </script>
+  </body>
+</html>
