@@ -5,6 +5,7 @@ import './style.css'
 
 // 想在app中订阅store
 import store from './store/index'
+import { About } from './page/About'
 
 export class App extends PureComponent {
   constructor(){
@@ -28,6 +29,7 @@ export class App extends PureComponent {
         <div className='pages'>
           <Home />
           <Profile/>
+          <About/>
         </div>
       </div>
     )
