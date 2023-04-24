@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import store from '../store/index'
-import {subNumber} from '../store/actionCreater'
+import {subNumberAction} from '../store/actionCreater'
 
 export class Profile extends PureComponent {
   constructor(){
@@ -17,7 +17,7 @@ export class Profile extends PureComponent {
     })
   }
   lessNumber(num){
-    store.dispatch(subNumber(num))
+    store.dispatch(subNumberAction(num))
   }
   render() {
     const {counter} = this.state

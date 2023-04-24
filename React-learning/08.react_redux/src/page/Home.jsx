@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import store from '../store/index'
-import {addNumber} from '../store/actionCreater'
+import {addNumberAction} from '../store/actionCreater'
 
 export class Home extends PureComponent {
 
@@ -18,7 +18,7 @@ export class Home extends PureComponent {
     })
   }
   addNumber(num){
-    store.dispatch(addNumber(num))
+    store.dispatch(addNumberAction(num))
   }
   render() {
     const {counter} = this.state

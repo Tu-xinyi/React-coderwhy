@@ -1,11 +1,11 @@
 import * as actionTypes from './constant'
 
 
-export const addNumber = (num)=>({
+export const addNumberAction = (num)=>({
   type:actionTypes.ADD_NUMBER,
   num
 })
-export const subNumber = (num)=>({
+export const subNumberAction = (num)=>({
   type:actionTypes.SUB_NUMBER,
   num
 })
