@@ -13,6 +13,9 @@ export class Home extends PureComponent {
   subNumber(num){
     this.props.subNumber(num)
   }
+  // 传统方式请求异步函数 
+  // 在react-redux中我们使用了applyMiddleware（thunk）让dipatch可以派发函数
+  // 在RTK中我们使用createAsyncThunk()函数 来请求异步数据
   componentDidMount(){
     // axios.get('http://123.207.32.32:8000/home/multidata').then(res=>{
     //   const banners= res.data.data.banner.list;
@@ -35,6 +38,7 @@ export class Home extends PureComponent {
     )
   }
 }
+
 const mapStateToProps = (state)=>({
   counter:state.counter.counter
 })
@@ -46,10 +50,10 @@ const mapDispatchToProps = (dispatch)=>({
   subNumber(num){
     dispatch(subNumber(num))
   },
+  //派发异步请求函数 
   fetchHomeMultidata(){
     dispatch(fetchHomeMultidataAction({name:'tutu'}))
   }
 })
-
 
 export default connect(mapStateToProps,mapDispatchToProps)(Home)

@@ -1,17 +1,12 @@
-import * as actionTypes from './constant'
+import * as actionTypes from './contants.js'
 
 const initialState = {
-  counter:100,
   banners:[],
   recommends:[]
 }
 
-function reducer(state=initialState,action){
+function reducer(state = initialState,action){
   switch(action.type){
-    case actionTypes.ADD_NUMBER:
-      return {...state,counter:state.counter+action.num}
-    case actionTypes.SUB_NUMBER:
-      return {...state,counter:state.counter-action.num}
     case actionTypes.CHANGE_BANNERS:
       return {...state,banners:action.banners}
     case actionTypes.CHANGE_RECOMMENDS:
@@ -20,5 +15,4 @@ function reducer(state=initialState,action){
       return state
   }
 }
-
 export default reducer

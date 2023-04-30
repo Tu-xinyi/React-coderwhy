@@ -20,6 +20,7 @@ export class App extends PureComponent {
 }
 
 const mapStateToProps = (state)=>({
+  // 因为reducer做了分包 将结构更深一层
   counter:state.counter.counter
 })
 

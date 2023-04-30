@@ -1,9 +1,12 @@
+// createAsyncThunk请求异步函数
 import { createSlice,createAsyncThunk } from "@reduxjs/toolkit";
 import axios from 'axios'
 
 // 创建异步action 方法一：
 // export const fetchHomeMultidataAction = createAsyncThunk(
+    // 函数名
 //   'fetch/homemultidata',
+    // 异步函数
 //   async()=>{
 //     const res= await axios.get('http://123.207.32.32:8000/home/multidata')
 // return res.data;
@@ -19,6 +22,7 @@ export const fetchHomeMultidataAction = createAsyncThunk(
     const res= await axios.get('http://123.207.32.32:8000/home/multidata')
     const banners= res.data.data.banner.list;
     const recommends = res.data.data.recommend.list;
+    // 得到结果后 直接派发action 改变state的数值
     dispatch(changeBanners(banners))
     dispatch(changeRecommends(recommends))
   // return res.data;
