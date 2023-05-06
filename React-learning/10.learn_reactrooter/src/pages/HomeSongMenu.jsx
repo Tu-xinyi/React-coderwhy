@@ -13,7 +13,7 @@ export class HomeSongMenu extends PureComponent {
     }
   }
   navigateToDetail(id){
-    console.log(id);
+    // console.log(id);
     const {navigate} = this.props.router
     navigate('/detail/'+id)
   }

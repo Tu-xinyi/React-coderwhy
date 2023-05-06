@@ -4,7 +4,8 @@ import { withRouter } from '../hoc'
 export class Detail extends PureComponent {
   render() {
     const {router} = this.props
-    console.log(router);
+    // console.log(router);
+
     return (
       <div>
         <h2>Detail Page:</h2>
